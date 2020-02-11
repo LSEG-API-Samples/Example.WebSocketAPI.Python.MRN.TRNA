@@ -1,0 +1,4 @@
+.vscode/
+notebook/.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+mrn_python/
