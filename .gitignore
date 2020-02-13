@@ -2,3 +2,5 @@
 notebook/.ipynb_checkpoints
 */.ipynb_checkpoints/*
 mrn_python/
+mrn_trna_sample.json
+mrn_trna_data.txt
