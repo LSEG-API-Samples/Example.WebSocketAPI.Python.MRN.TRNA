@@ -27,7 +27,7 @@ user = 'root'
 app_id = '256'
 position = socket.gethostbyname(socket.gethostname())
 mrn_domain = 'NewsTextAnalytics'
-mrn_item = 'MRN_STORY'
+mrn_item = 'MRN_TRNA'
 
 # Global Variables
 web_socket_app = None
