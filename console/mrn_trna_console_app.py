@@ -21,7 +21,7 @@ import base64
 import zlib
 
 # Global Default Variables
-hostname = '172.20.33.30'
+hostname = '127.0.0.1'
 port = '15000'
 user = 'root'
 app_id = '256'
