@@ -9,13 +9,13 @@
 This project shows how to writing the [Elektron WebSocket API](https://developers.refinitiv.com/elektron/websocket-api) application to consume [Refinitiv News Analytics (TRNA)](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html) data from Thomson Reuters Enterprise Platform (TREP) via Machine Readable News (MRN) domain. The example just connects to TREP via a WebSocket connection, then subscribes and shows how to get each TRNA field data in a classic Jupyter Notebook application. The project are implemented with Python language, but the main concept for consuming and assembling MRN and TRNA messages are the same for all technologies. 
 
 
-## Refinitiv News Analytics and Machine Readable News Overview
+## Refinitiv News Analytics Overview
 
 Refinitiv News Analytics (TRNA) provides real-time numerical insight into the events on multiple news sources, in a format that can be directly consumed by algorithmic trading systems. TRNA enables algorithms to exploit the power of news to seize opportunities, capitalize on market inefficiencies and manage event risk.
 
 TRNA is published via Elektron as part of Refinitiv Machine Readable News (MRN) data model. MRN is an advanced service for automating the consumption and systematic analysis of news. It delivers deep historical news archives, ultra-low latency structured news and news analytics directly to your applications. 
 
-### MRN Data model
+### MRN Data Model
 
 The MRN data is published over Elektron using an Open Message Model (OMM) envelope in News Text Analytics domain messages. The News Analytics content set is made available over ```MRN_TRNA``` RIC. The content data is contained in a FRAGMENT field that has been compressed, and potentially fragmented across multiple messages, in order to reduce bandwidth and message size.
 
@@ -52,15 +52,14 @@ This example requires the following dependencies softwares and libraries.
 -  You can install a classic Jupyter Notebook on your local machine and then test the example on the machine. The alternate choice is a free Jupyter Notebook on cloud environment such as [Azure Notebook](https://notebooks.azure.com/) provided by Microsoft. You can find more details from [this tutorial](https://docs.microsoft.com/en-us/azure/notebooks/tutorial-create-run-jupyter-notebook). If you are not familiar with Jupyter Notebook, the following [tutorial](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook) created by DataCamp may help.
 - It is not advisable to change the ADH/ADS configuration, if you are not familiar with the configuration procedures. Please consult your Market Data administrator for any questions regarding TREP-MRN service configuration.
 
-
 ## Application Files
 This example project contains the following files and folders
 1. *notebook_python/mrn_trna_notebook_app.ipynb*: The example Jupyter Notebook application file
 2. *console/mrn_trna_console_app.py*: The  example console application file
 3. *MRN_TRNA_env.yml*: The Jupyter Notebook environment and dependencies configuration file
-3. *requirements.txt*: The console example dependencies configuration file
-4. *LICENSE.md*: Project's license file
-5. *README.md*: Project's README file
+4. *requirements.txt*: The console example dependencies configuration file
+5. *LICENSE.md*: Project's license file
+6. *README.md*: Project's README file
 
 ## How to run this example
 
@@ -183,7 +182,18 @@ RECEIVED:
 ]
 FRAGMENT length = 886
 decompress News FRAGMENT(s) for GUID  tr:FWN2AC05L_2002122Bb+B8ovXm7j38ArRD6+NJxP0JFIyfwQKz1cW9
-News = {'analytics': {'analyticsScores': [{'assetClass': 'CMPNY', 'assetCodes': ['P:4298007720', 'R:OOMS.OM'], 'assetId': '4298007720', 'assetName': 'Oman Oil Marketing Co SAOG', 'brokerAction': 'UNDEFINED', 'firstMentionSentence': 1, 'linkedIds': [{'idPosition': 0, 'linkedId': 'tr:FWN2AC05L_2002121mnnwDisVBTwGRMEBDWO2RhXStbXb8sD3i0Jjk'}], 'noveltyCounts': [{'itemCount': 1, 'window': '12H'}, {'itemCount': 1, 'window': '24H'}, {'itemCount': 1, 'window': '3D'}, {'itemCount': 1, 'window': '5D'}, {'itemCount': 1, 'window': '7D'}], 'priceTargetIndicator': 'UNDEFINED', 'relevance': 1.0, 'sentimentClass': 1, 'sentimentNegative': 0.0422722, 'sentimentNeutral': 0.128453, 'sentimentPositive': 0.829275, 'sentimentWordCount': 44, 'volumeCounts': [{'itemCount': 1, 'window': '12H'}, {'itemCount': 1, 'window': '24H'}, {'itemCount': 1, 'window': '3D'}, {'itemCount': 1, 'window': '5D'}, {'itemCount': 1, 'window': '7D'}]}], 'newsItem': {'bodySize': 223, 'companyCount': 1, 'exchangeAction': 'UNDEFINED', 'headlineTag': 'BRIEF', 'marketCommentary': False, 'sentenceCount': 5, 'wordCount': 52}, 'systemVersion': 'TS:40060112'}, 'id': 'tr:FWN2AC05L_2002122Bb+B8ovXm7j38ArRD6+NJxP0JFIyfwQKz1cW9', 'newsItem': {'dataType': 'News', 'feedFamilyCode': 'tr', 'headline': 'BRIEF-Oman Oil Marketing Board Proposes FY Dividend ', 'language': 'en', 'metadata': {'altId': 'nFWN2AC05L', 'audiences': ['NP:E', 'NP:GFN', 'NP:PSC', 'NP:RNP', 'NP:DNP', 'NP:PCO'], 'feedTimestamp': '2020-02-12T04:50:30.700Z', 'firstCreated': '2020-02-12T04:50:30.000Z', 'isArchive': False, 'takeSequence': 1}, 'provider': 'NS:RTRS', 'sourceId': 'FWN2AC05L_2002122Bb+B8ovXm7j38ArRD6+NJxP0JFIyfwQKz1cW9', 'sourceTimestamp': '2020-02-12T04:50:30.000Z', 'subjects': ['M:NY', 'M:Z', 'E:F', 'G:1', 'G:Q', 'G:7B', 'B:8', 'B:1010', 'B:2', 'B:219', 'B:5', 'E:1', 'E:G', 'G:F', 'G:H', 'G:K', 'G:S', 'R:OOMS.OM', 'P:4298007720', 'M:1QD', 'N2:BLR', 'N2:CMPNY', 'N2:DIV', 'N2:EMRG', 'N2:MEAST', 'N2:OM', 'N2:REFI', 'N2:REFI1', 'N2:ENFF', 'N2:ENER', 'N2:OILG', 'N2:BACT', 'N2:RES', 'N2:TGLF', 'N2:SWASIA', 'N2:ASIA', 'N2:ASXPAC', 'N2:LEN'], 'urgency': 3}}
+News = {'analytics': {'analyticsScores': [{'assetClass': 'CMPNY', 'assetCodes': ['P:4298007720', 'R:OOMS.OM'], 'assetId': '4298007720', 'assetName': 'Oman Oil Marketing Co SAOG', 'brokerAction': 'UNDEFINED', 'firstMentionSentence': 1, 'linkedIds': [{'idPosition': 0, 'linkedId': 'tr:FWN2AC05L_2002121mnnwDisVBTwGRMEBDWO2RhXStbXb8sD3i0Jjk'}], 
+'noveltyCounts': [{'itemCount': 1, 'window': '12H'}, {'itemCount': 1, 'window': '24H'}, {'itemCount': 1, 'window': '3D'}, {'itemCount': 1, 'window': '5D'}, {'itemCount': 1, 'window': '7D'}], 'priceTargetIndicator': 'UNDEFINED', 'relevance': 1.0, 'sentimentClass': 1, 'sentimentNegative': 0.0422722, 'sentimentNeutral': 0.128453, 'sentimentPositive': 0.829275, 'sentimentWordCount': 44, 
+'volumeCounts': [{'itemCount': 1, 'window': '12H'}, {'itemCount': 1, 'window': '24H'}, {'itemCount': 1, 'window': '3D'}, 
+{'itemCount': 1, 'window': '5D'}, {'itemCount': 1, 'window': '7D'}]}], 'newsItem': {'bodySize': 223, 'companyCount': 1, 'exchangeAction': 'UNDEFINED', 'headlineTag': 'BRIEF', 'marketCommentary': False, 'sentenceCount': 5, 'wordCount': 52}, 
+'systemVersion': 'TS:40060112'}, 'id': 'tr:FWN2AC05L_2002122Bb+B8ovXm7j38ArRD6+NJxP0JFIyfwQKz1cW9', 'newsItem': 
+{'dataType': 'News', 'feedFamilyCode': 'tr', 'headline': 'BRIEF-Oman Oil Marketing Board Proposes FY Dividend ', 'language': 'en', 'metadata': {'altId': 'nFWN2AC05L', 'audiences': ['NP:E', 'NP:GFN', 'NP:PSC', 'NP:RNP', 'NP:DNP', 'NP:PCO'], 
+'feedTimestamp': '2020-02-12T04:50:30.700Z', 'firstCreated': '2020-02-12T04:50:30.000Z', 'isArchive': False, 'takeSequence': 1}, 'provider': 'NS:RTRS', 'sourceId': 'FWN2AC05L_2002122Bb+B8ovXm7j38ArRD6+NJxP0JFIyfwQKz1cW9', 
+'sourceTimestamp': '2020-02-12T04:50:30.000Z', 'subjects': ['M:NY', 'M:Z', 'E:F', 'G:1', 'G:Q',
+ 'G:7B', 'B:8', 'B:1010', 'B:2', 'B:219', 'B:5', 'E:1', 'E:G', 'G:F', 'G:H', 'G:K', 'G:S', 
+ 'R:OOMS.OM', 'P:4298007720', 'M:1QD', 'N2:BLR', 'N2:CMPNY', 'N2:DIV', 'N2:EMRG', 'N2:MEAST', 
+ 'N2:OM', 'N2:REFI', 'N2:REFI1', 'N2:ENFF', 'N2:ENER', 'N2:OILG', 'N2:BACT', 'N2:RES', 'N2:TGLF', 
+ 'N2:SWASIA', 'N2:ASIA', 'N2:ASXPAC', 'N2:LEN'], 'urgency': 3}}
 ```
 
 ## References
@@ -194,6 +204,5 @@ News = {'analytics': {'analyticsScores': [{'assetClass': 'CMPNY', 'assetCodes': 
 * [Introduction to Machine Readable News with Elektron WebSocket API](https://developers.refinitiv.com/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
 * [Introduction to Machine Readable News (MRN) with Elektron Message API (EMA)](https://developers.refinitiv.com/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
 * [MRN Data Models and Elektron Implementation Guide](https://developers.refinitiv.com/elektron/elektron-sdk-java/docs?content=8736&type=documentation_item).
-
 
 For any question related to this example or Elektron WebSocket API, please use the Developer Community [Q&A Forum](https://community.developers.refinitiv.com/spaces/152/websocket-api.html).
