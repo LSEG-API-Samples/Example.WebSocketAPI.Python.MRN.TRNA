@@ -200,7 +200,7 @@ News = {'analytics': {'analyticsScores': [{'assetClass': 'CMPNY', 'assetCodes': 
 * [Refinitiv Elektron SDK Family page](https://developers.refinitiv.com/elektron) on the [Refinitiv Developer Community](https://developers.thomsonreuters.com/) web site.
 * [Refinitiv Elektron WebSocket API page](https://developers.refinitiv.com/websocket-api).
 * [Developer Webinar Recording: Introduction to Elektron WebSocket API](https://www.youtube.com/watch?v=CDKWMsIQfaw).
-* [Refinitiv News Analytics page](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html).
+* [Refinitiv News Analytics Product page](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html).
 * [Introduction to Machine Readable News with Elektron WebSocket API](https://developers.refinitiv.com/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
 * [Introduction to Machine Readable News (MRN) with Elektron Message API (EMA)](https://developers.refinitiv.com/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
 * [MRN Data Models and Elektron Implementation Guide](https://developers.refinitiv.com/elektron/elektron-sdk-java/docs?content=8736&type=documentation_item).
