@@ -8,6 +8,8 @@
 
 This project shows how to writing the [Elektron WebSocket API](https://developers.refinitiv.com/elektron/websocket-api) application to consume [Refinitiv News Analytics (TRNA)](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html) data from Thomson Reuters Enterprise Platform (TREP) via Machine Readable News (MRN) domain. The example just connects to TREP via a WebSocket connection, then subscribes and shows how to get each TRNA field data in a classic Jupyter Notebook application. The project are implemented with Python language, but the main concept for consuming and assembling MRN and TRNA messages are the same for all technologies. 
 
+You can find the full article regarding this project at [How to get MRN News Analytics Data via Elektron WebSocket API](https://developers.refinitiv.com/article/how-get-mrn-news-analytics-data-elektron-websocket-api-refinitiv) page.
+
 
 ## Refinitiv News Analytics Overview
 
@@ -39,6 +41,7 @@ If you are not familiar with MRN concept, please visit the following resources w
 * [Introduction to Machine Readable News (MRN) with Elektron Message API (EMA)](https://developers.refinitiv.com/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
 * [News Analytics Data Models and User Guide section in My Refinitiv's TRNA page](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html).
 * [Introduction to Machine Readable News with Elektron WebSocket API](https://developers.refinitiv.com/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
+* [How to get MRN News Analytics Data via Elektron WebSocket API](https://developers.refinitiv.com/article/how-get-mrn-news-analytics-data-elektron-websocket-api-refinitiv).
 
 ## Prerequisite
 This example requires the following dependencies softwares and libraries.
@@ -202,6 +205,7 @@ News = {'analytics': {'analyticsScores': [{'assetClass': 'CMPNY', 'assetCodes': 
 * [Developer Webinar Recording: Introduction to Elektron WebSocket API](https://www.youtube.com/watch?v=CDKWMsIQfaw).
 * [Refinitiv News Analytics Product page](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html).
 * [Introduction to Machine Readable News with Elektron WebSocket API](https://developers.refinitiv.com/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
+* [How to get MRN News Analytics Data via Elektron WebSocket API](https://developers.refinitiv.com/article/how-get-mrn-news-analytics-data-elektron-websocket-api-refinitiv).
 * [Introduction to Machine Readable News (MRN) with Elektron Message API (EMA)](https://developers.refinitiv.com/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
 * [MRN Data Models and Elektron Implementation Guide](https://developers.refinitiv.com/elektron/elektron-sdk-java/docs?content=8736&type=documentation_item).
 
