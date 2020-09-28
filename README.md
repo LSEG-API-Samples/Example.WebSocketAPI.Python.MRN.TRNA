@@ -1,28 +1,34 @@
-# How to get MRN News Analytics via Elektron WebSocket API with Python
-- Last update: March 2020
+# How to get Machine Readable News Analytics via  WebSocket API with Python
+- Last update: September 2020
 - Environment: Windows
 - Compiler: Python and Conda distribution
 - Prerequisite: ADS and ADH servers version 3.2.1 and above, MRN service
 
 ## Project Overview
 
-This project shows how to writing the [Elektron WebSocket API](https://developers.refinitiv.com/elektron/websocket-api) application to consume [Refinitiv News Analytics (TRNA)](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html) data from Thomson Reuters Enterprise Platform (TREP) via Machine Readable News (MRN) domain. The example just connects to TREP via a WebSocket connection, then subscribes and shows how to get each TRNA field data in a classic Jupyter Notebook application. The project are implemented with Python language, but the main concept for consuming and assembling MRN and TRNA messages are the same for all technologies. 
+This project shows how to writing the [Websocket API for Pricing Streaming and Real-Time Service](https://developers.refinitiv.com/elektron/websocket-api) aka Websocket API application to consume [Refinitiv News Analytics (TRNA)](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html) data from Refinitiv Real-Time Distribution System (ADH and ADS servers) via Machine Readable News (MRN) domain. The example just connects to Refinitiv Real-Time via a WebSocket connection, then subscribes and shows how to get each TRNA field data in a classic Jupyter Notebook application. The project are implemented with Python language, but the main concept for consuming and assembling MRN and TRNA messages are the same for all technologies. 
 
-You can find the full article regarding this project at [How to get MRN News Analytics Data via Elektron WebSocket API](https://developers.refinitiv.com/article/how-get-mrn-news-analytics-data-elektron-websocket-api-refinitiv) page.
+You can find the full article regarding this project at [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/article/how-get-mrn-news-analytics-data-elektron-websocket-api-refinitiv) page.
+
+## Prerequisite
+
+This example is focusing on the Refinitiv Machine Readable News (MRN) data processing only. I highly recommend you check the  [WebSocket API Tutorials](https://developers.refinitiv.com/en/api-catalog/elektron/refinitiv-websocket-api/tutorials) page if you are not familiar with WebSocket API. 
+
+The Tutorials page provide a step by step guide (connect, login, request data, parse data, etc) for developers who interested in developing a WebSocket application to consume real-time data from Refinitiv Real-Time. 
 
 
 ## Refinitiv News Analytics Overview
 
 Refinitiv News Analytics (TRNA) provides real-time numerical insight into the events on multiple news sources, in a format that can be directly consumed by algorithmic trading systems. TRNA enables algorithms to exploit the power of news to seize opportunities, capitalize on market inefficiencies and manage event risk.
 
-TRNA is published via Elektron as part of Refinitiv Machine Readable News (MRN) data model. MRN is an advanced service for automating the consumption and systematic analysis of news. It delivers deep historical news archives, ultra-low latency structured news and news analytics directly to your applications. 
+TRNA is published via Refinitiv Real-Time as part of Refinitiv Machine Readable News (MRN) data model. MRN is an advanced service for automating the consumption and systematic analysis of news. It delivers deep historical news archives, ultra-low latency structured news and news analytics directly to your applications. 
 
 ### MRN Data Model
 
-The MRN data is published over Elektron using an Open Message Model (OMM) envelope in News Text Analytics domain messages. The News Analytics content set is made available over ```MRN_TRNA``` RIC. The content data is contained in a FRAGMENT field that has been compressed, and potentially fragmented across multiple messages, in order to reduce bandwidth and message size.
+The MRN data is published over Refinitiv Real-Time using an Open Message Model (OMM) envelope in News Text Analytics domain messages. The News Analytics content set is made available over ```MRN_TRNA``` RIC. The content data is contained in a FRAGMENT field that has been compressed, and potentially fragmented across multiple messages, in order to reduce bandwidth and message size.
 
 A FRAGMENT field has a different data type based on a connection type:
-* RSSL connection (ESDK [C++](https://developers.refinitiv.com/elektron/elektron-sdk-cc)/[Java](https://developers.refinitiv.com/elektron/elektron-sdk-java)): BUFFER type
+* RSSL connection (RTSDK [C++](https://developers.refinitiv.com/elektron/elektron-sdk-cc)/[Java](https://developers.refinitiv.com/elektron/elektron-sdk-java)): BUFFER type
 * WebSocket connection: Base64 ascii string
 
 The data goes through the following series of transformations:
@@ -38,14 +44,14 @@ Therefore, in order to parse the core content data, the application will need to
 
 If you are not familiar with MRN concept, please visit the following resources which will give you a full explanation of the MRN data model and implementation logic:
 * [Webinar Recording: Introduction to Machine Readable News](https://developers.refinitiv.com/news#news-accordion-nid-12045)
-* [Introduction to Machine Readable News (MRN) with Elektron Message API (EMA)](https://developers.refinitiv.com/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
+* [Introduction to Machine Readable News (MRN) with Enterprise Message API (EMA)](https://developers.refinitiv.com/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
 * [News Analytics Data Models and User Guide section in My Refinitiv's TRNA page](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html).
-* [Introduction to Machine Readable News with Elektron WebSocket API](https://developers.refinitiv.com/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
-* [How to get MRN News Analytics Data via Elektron WebSocket API](https://developers.refinitiv.com/article/how-get-mrn-news-analytics-data-elektron-websocket-api-refinitiv).
+* [Introduction to Machine Readable News with WebSocket API](https://developers.refinitiv.com/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
+* [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/article/how-get-mrn-news-analytics-data-elektron-websocket-api-refinitiv).
 
 ## Prerequisite
 This example requires the following dependencies softwares and libraries.
-1. TREP server (both ADS and ADH) 3.2.x with WebSocket connection and MRN Service.
+1. ADS and ADH servers 3.2.x with WebSocket connection and MRN Service.
 2. [Python](https://www.python.org/) compiler and runtime.
 3. Python [Ananconda](https://www.anaconda.com/distribution/) or [MiniConda](https://docs.conda.io/en/latest/miniconda.html) distribution/package manager.
 4. [Classic Jupyter Notebook](https://jupyter.org/) web application.
@@ -53,7 +59,7 @@ This example requires the following dependencies softwares and libraries.
 *Note:* 
 - This Project has been qualified with Python version 3.7.6 and Conda version 4.8.1
 -  You can install a classic Jupyter Notebook on your local machine and then test the example on the machine. The alternate choice is a free Jupyter Notebook on cloud environment such as [Azure Notebook](https://notebooks.azure.com/) provided by Microsoft. You can find more details from [this tutorial](https://docs.microsoft.com/en-us/azure/notebooks/tutorial-create-run-jupyter-notebook). If you are not familiar with Jupyter Notebook, the following [tutorial](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook) created by DataCamp may help.
-- It is not advisable to change the ADH/ADS configuration, if you are not familiar with the configuration procedures. Please consult your Market Data administrator for any questions regarding TREP-MRN service configuration.
+- It is not advisable to change the ADH/ADS configuration, if you are not familiar with the configuration procedures. Please consult your Market Data administrator for any questions regarding ADH/ADS-MRN service configuration.
 
 ## Application Files
 This example project contains the following files and folders
@@ -66,7 +72,7 @@ This example project contains the following files and folders
 
 ## How to run this example
 
-Please be informed that your TREP server (ADS and ADH) should have a Service that contain MRN data. The first step is unzip or download the example project folder into a directory of your choice, then choose how to run application based on your environment below.
+Please be informed that your ADS and ADH servers should have a Service that contain MRN data. The first step is unzip or download the example project folder into a directory of your choice, then choose how to run application based on your environment below.
 
 ### Classic Jupyter Notebook example
 1. Open Anaconda Prompt and go to project's folder
@@ -91,7 +97,7 @@ Please be informed that your TREP server (ADS and ADH) should have a Service tha
     ```
     $> python mrn_trna_console_app.py --hostname <ADS server IP Address/Hostname> --port <WebSocket Port> 
     ```
-4. The application subscribes ```MRN_TRNA``` RIC code from TREP by default. 
+4. The application subscribes ```MRN_TRNA``` RIC code from ADS by default. 
 
 *Note:* 
 - Please refer to the [pip installation guide page](https://pip.pypa.io/en/stable/installing/) if your environment does not have the [pip tool](https://pypi.org/project/pip/) installed. 
@@ -99,7 +105,7 @@ Please be informed that your TREP server (ADS and ADH) should have a Service tha
 
 
 ## Example Results
-### Send MRN_STORY request to TREP
+### Send MRN_STORY request to ADS
 ```
 SENT:
 {
@@ -200,13 +206,13 @@ News = {'analytics': {'analyticsScores': [{'assetClass': 'CMPNY', 'assetCodes': 
 ```
 
 ## References
-* [Refinitiv Elektron SDK Family page](https://developers.refinitiv.com/elektron) on the [Refinitiv Developer Community](https://developers.thomsonreuters.com/) web site.
-* [Refinitiv Elektron WebSocket API page](https://developers.refinitiv.com/websocket-api).
-* [Developer Webinar Recording: Introduction to Elektron WebSocket API](https://www.youtube.com/watch?v=CDKWMsIQfaw).
+* [Refinitiv Real-Time SDK Family page](https://developers.refinitiv.com/elektron) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) web site.
+* [Refinitiv WebSocket API page](https://developers.refinitiv.com/websocket-api).
+* [Developer Webinar Recording: Introduction to WebSocket API](https://www.youtube.com/watch?v=CDKWMsIQfaw).
 * [Refinitiv News Analytics Product page](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html).
-* [Introduction to Machine Readable News with Elektron WebSocket API](https://developers.refinitiv.com/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
-* [How to get MRN News Analytics Data via Elektron WebSocket API](https://developers.refinitiv.com/article/how-get-mrn-news-analytics-data-elektron-websocket-api-refinitiv).
-* [Introduction to Machine Readable News (MRN) with Elektron Message API (EMA)](https://developers.refinitiv.com/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
-* [MRN Data Models and Elektron Implementation Guide](https://developers.refinitiv.com/elektron/elektron-sdk-java/docs?content=8736&type=documentation_item).
+* [Introduction to Machine Readable News with WebSocket API](https://developers.refinitiv.com/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
+* [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/article/how-get-mrn-news-analytics-data-elektron-websocket-api-refinitiv).
+* [Introduction to Machine Readable News (MRN) with Enterprise Message API (EMA)](https://developers.refinitiv.com/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
+* [MRN Data Models and Refinitiv Real-time Implementation Guide](https://developers.refinitiv.com/elektron/elektron-sdk-java/docs?content=8736&type=documentation_item).
 
-For any question related to this example or Elektron WebSocket API, please use the Developer Community [Q&A Forum](https://community.developers.refinitiv.com/spaces/152/websocket-api.html).
+For any question related to this example or WebSocket API, please use the Developer Community [Q&A Forum](https://community.developers.refinitiv.com/spaces/152/websocket-api.html).
