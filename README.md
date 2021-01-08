@@ -18,7 +18,7 @@ The Tutorials page provides a step-by-step guide (connect, log in, request data,
 
 ## Refinitiv News Analytics Overview
 
-Refinitiv News Analytics (TRNA) provides real-time numerical insight into the events on multiple news sources, in a format that can be directly consumed by algorithmic trading systems. TRNA enables algorithms to exploit the power of news to seize opportunities, capitalize on market inefficiencies, and manage event risk.
+[Refinitiv News Analytics (TRNA)](https://my.refinitiv.com/content/mytr/en/product/machine-readable-news-analytics.html) provides real-time numerical insight into the events on multiple news sources, in a format that can be directly consumed by algorithmic trading systems. TRNA enables algorithms to exploit the power of news to seize opportunities, capitalize on market inefficiencies, and manage event risk.
 
 TRNA is published via Refinitiv Real-Time as part of Refinitiv Machine Readable News (MRN) data model. MRN is an advanced service for automating the consumption and systematic analysis of news. It delivers deep historical news archives, ultra-low latency structured news, and news analytics directly to your applications. 
 
