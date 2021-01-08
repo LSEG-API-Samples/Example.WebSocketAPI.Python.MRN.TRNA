@@ -211,7 +211,7 @@ For further details, please check out the following resources:
 * [Refinitiv Real-Time & Distribution Family page](https://developers.refinitiv.com/en/use-cases-catalog/refinitiv-real-time) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) web site.
 * [WebSocket API page](https://developers.refinitiv.com/en/api-catalog/elektron/refinitiv-websocket-api)..
 * [Developer Webinar Recording: Introduction to WebSocket API](https://www.youtube.com/watch?v=CDKWMsIQfaw).
-* [Refinitiv News Analytics Product page](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html).
+* [Refinitiv News Analytics Product page](https://my.refinitiv.com/content/mytr/en/product/machine-readable-news-analytics.html).
 * [Introduction to Machine Readable News with WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
 * [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api).
 * [Introduction to Machine Readable News (MRN) with Enterprise Message API (EMA)](https://developers.refinitiv.com/en/article-catalog/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
