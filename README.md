@@ -1,5 +1,5 @@
 # How to get Machine Readable News Analytics via  WebSocket API with Python
-- Last update: May 2021
+- Last update: Dec 2021
 - Environment: Windows
 - Compiler: Python and Conda distribution
 - Prerequisite: Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution servers version 3.2.1 and above, MRN service
@@ -55,11 +55,16 @@ This example requires the following dependencies software  and libraries.
 2. [Python](https://www.python.org/) compiler and runtime.
 3. Python [Anaconda](https://www.anaconda.com/distribution/) or [MiniConda](https://docs.conda.io/en/latest/miniconda.html) distribution/package manager.
 4. [Classic Jupyter Notebook](https://jupyter.org/) web application.
+5. RTO Access credentials for the rTO example
+6. Internet connection.
 
 *Note:* 
 - This Project has been qualified with Python version 3.7.6 and Conda version 4.8.1
--  You can install a classic Jupyter Notebook on your local machine and then test the example on the machine. The alternate choice is a free Jupyter Notebook on cloud environments such as [Azure Notebook](https://notebooks.azure.com/) provided by Microsoft. You can find more details from [this tutorial](https://docs.microsoft.com/en-us/azure/notebooks/tutorial-create-run-jupyter-notebook). If you are not familiar with Jupyter Notebook, the following [tutorial](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook) created by DataCamp may help.
+- If you are not familiar with Jupyter Notebook, the following [tutorial](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook) created by DataCamp may help.
 - It is not advisable to change the Refinitiv Real-Time Distribution System configuration if you are not familiar with the configuration procedures. Please consult your Market Data administrator for any questions regarding Refinitiv Real-Time Distribution System-MRN service configuration.
+- Please contact your Refinitiv's representative to help you to access the RTO account, and services. You can find more detail regarding the RTO access credentials set up from the *Getting Started for Machine ID* section of the [Getting Start with Refinitiv Data Platform article](https://developers.refinitiv.com/en/article-catalog/article/getting-start-with-refinitiv-data-platform) article.
+- Please refer to the [pip installation guide page](https://pip.pypa.io/en/stable/installing/) if your environment does not have the [pip tool](https://pypi.org/project/pip/) installed. 
+
 
 ## Application Files
 This example project contains the following files and folders
@@ -72,9 +77,12 @@ This example project contains the following files and folders
 
 ## How to run this example
 
-Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server should have a Service that contains MRN data. The first step is to unzip or download the example project folder into a directory of your choice, then choose how to run the application based on your environment below.
+The first step is to unzip or download the example project folder into a directory of your choice, then choose how to run the application based on your environment below.
 
 ### Classic Jupyter Notebook example
+
+Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server should have a Service that contains MRN data. 
+
 1. Open Anaconda Prompt and go to the project's folder
 2. Run the following command in an Anaconda Prompt to create a Conda environment named *MRN_TRNA* for the project.
   ```
@@ -90,7 +98,10 @@ Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv
   ```
 5. Open *mrn_trna_notebook_app.ipynb* Notebook document, then follow through each notebook cell.
 
-### A console example
+### A RTDS console example
+
+Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server should have a Service that contains MRN data. 
+
 1. Go to project folder in th
 2. Run ```$> pip install -r requestments.txt``` command in a console to install all the dependencies libraries.
 3. Then you can run mrn_console_app.py application with the following command
@@ -100,9 +111,27 @@ Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv
 4. The application subscribes ```MRN_TRNA``` RIC code from Real-Time Advanced Distribution Server by default. 
 
 *Note:* 
-- Please refer to the [pip installation guide page](https://pip.pypa.io/en/stable/installing/) if your environment does not have the [pip tool](https://pypi.org/project/pip/) installed. 
-- If your environment already has a websocket-client library installed, you can use ```pip list``` command to verify a library version, then use ```pip install --upgrade websocket-client``` command to upgrade websocket-client library. 
 
+
+### A RTO console example
+1. Go to project folder in th
+2. Run ```$> pip install -r requestments.txt``` command in a console to install all the dependencies libraries.
+4. Go to the project's console folder. and create a file name ```.env``` with the following content.
+    ```
+    # RTO Credentials
+    RTO_USER=<Your RTO Machine-ID>
+    RTO_PASSWORD=<Your RTO Password>
+    RTO_APP_KEY=<Your RTO App Key>
+
+    # RDP-RTO Core Configurations
+    RDP_BASE_URL=https://api.refinitiv.com
+    RDP_AUTH_URL=/auth/oauth2/v1/token
+    RDP_DISCOVERY_URL=/streaming/pricing/v1/
+    ```
+4. Then you can run mrn_console_app.py application with the following command
+    ```
+    $> python mrn_trna_console_rto.py --ric <MRN_TRNA RIC code by default> 
+    ```
 
 ## Example Results
 ### Send MRN_STORY request to Real-Time Advanced Distribution Server

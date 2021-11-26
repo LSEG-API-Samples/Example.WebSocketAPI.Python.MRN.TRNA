@@ -10,3 +10,8 @@ console/market_price.py
 dev_resources/
 notebook/mrn_notebook_app.ipynb
 python_trna/
+# for RTO
+rto_requirements.txt
+console/market_price_rdpgw_service_discovery.py
+.env
+console/.env
