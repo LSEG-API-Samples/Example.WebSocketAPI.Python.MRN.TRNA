@@ -15,3 +15,6 @@ rto_requirements.txt
 console/market_price_rdpgw_service_discovery.py
 .env
 console/.env
+
+notebook/mrn_realtime_news_notebook_app.ipynb
+notebook/.env
