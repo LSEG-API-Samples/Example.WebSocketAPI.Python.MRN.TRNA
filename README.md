@@ -53,8 +53,9 @@ This example requires the following dependencies software  and libraries.
 2. [Python](https://www.python.org/) interpreter and runtime.
 3. Python [Anaconda](https://www.anaconda.com/distribution/) or [MiniConda](https://docs.conda.io/en/latest/miniconda.html) distribution/package manager.
 4. [JupyterLab](https://jupyter.org/) web application.
-5. RTO Access credentials for the rTO example
+5. RTO Access credentials for the rTO example.
 6. Internet connection.
+7. [Docker Desktop/Engine](https://docs.docker.com/get-docker/) version 20.10.x and [DockerHub](https://hub.docker.com/) account (free subscription).
 
 *Note:* 
 - This Project has been qualified with Python version 3.8 and Conda version 4.10
@@ -186,6 +187,61 @@ Please be informed that your RTO access credentials should have a permission to 
   ```
   (MRN_TRNA) $>python console/mrn_trna_console_rto.py --ric <MRN_TRNA RIC code by default> 
   ```
+### <a id="rto_console_docker"></a>Bonus: RTO console Docker example
+
+Please be informed that your RTO access credentials should have a permission to request MRN data. 
+
+1. Go to the project folder in a console and create a file name ```.env``` in a ```console``` folder with the following content.
+  ```
+  # RTO Credentials
+  RTO_USER=<Your RTO Machine-ID>
+  RTO_PASSWORD=<Your RTO Password>
+  RTO_APP_KEY=<Your RTO App Key>
+
+  # RDP-RTO Core Configurations
+  RDP_BASE_URL=https://api.refinitiv.com
+  RDP_AUTH_URL=/auth/oauth2/v1/token
+  RDP_DISCOVERY_URL=/streaming/pricing/v1/
+  ```
+2. Run ```$> docker build -t <project tag name> .``` command in a console to build an image from a Dockerfile.
+  ```
+  $> docker build -t rto_ws_mrn_python .
+  ```
+3. Once the build is a success, you can create and run the container with the following command
+  ```
+  $> docker run --name mrn_console -it --env-file ./console/.env rto_ws_mrn_python --ric <MRN_TRNA RIC code by default> 
+  ```
+4. Press Ctrl+C buttons to stop the application
+
+### <a id="rto_jupyter_docker"></a>Bonus: RTO Jupyter Docker example
+
+Please be informed that your RTO access credentials should have a permission to request MRN data. 
+
+1. Go to the project folder in a console and create a file name ```.env``` in a ```notebook``` folder with the following content.
+  ```
+  # RTO Credentials
+  RTO_USER=<Your RTO Machine-ID>
+  RTO_PASSWORD=<Your RTO Password>
+  RTO_APP_KEY=<Your RTO App Key>
+
+  # RDP-RTO Core Configurations
+  RDP_BASE_URL=https://api.refinitiv.com
+  RDP_AUTH_URL=/auth/oauth2/v1/token
+  RDP_DISCOVERY_URL=/streaming/pricing/v1/
+  ```
+2. Run ```$> docker build -f Dockerfile-notebook -t <project tag name> .``` command in a console to build an image from a Dockerfile-notebook.
+  ```
+  $> docker build -f Dockerfile-notebook -t mrn_notebook .
+  ```
+3. Once the build is a success, you can create and run the container with the following command
+  ```
+  $> docker run -p 8888:8888 --name notebook -v <project /notebook/ directory>:/home/jovyan/work --env-file ./notebook/.env -it mrn_notebook
+  ```
+4. The mrn_notebook container will run the Jupyter server and print the server URL in a console. 
+5. Open the notebook server URL in your browser, the web browser will start the JupyterLab application.
+6. Press Ctrl+C buttons to stop the application
+
+For more detail regarding how to use Docker with Jupyter, please check this [Article.RDP.RDPLibrary.Python.R.JupyterDocker](https://github.com/Refinitiv-API-Samples/Article.RDP.RDPLibrary.Python.R.JupyterDocker) project.
 
 ## Example Results
 ### Send MRN_STORY request to Real-Time Advanced Distribution Server
