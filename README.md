@@ -2,7 +2,7 @@
 - Last update: Dec 2021
 - Environment: Windows
 - Compiler: Python and Conda distribution
-- Prerequisite: Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution servers version 3.2.1 and above, MRN service
+- Prerequisite: Refinitiv Real-Time Distribution System version 3.2.1 and above, or Refinitiv Real-Time -- Optimized credentials, and MRN service
 
 ## <a id="overview"></a>Project Overview
 
