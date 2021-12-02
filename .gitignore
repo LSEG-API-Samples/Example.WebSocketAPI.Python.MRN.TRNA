@@ -1,20 +1,29 @@
+old_requirements.txt
+
+.env
+
 .vscode/
 notebook/.ipynb_checkpoints
+notebook/mrn_trna_model.ipynb
+notebook/mrn_realtime_news_notebook_app_rtds.ipynb
+notebook/.env
+notebook/cloud_mrn_notebook_app.ipynb
+notebook/mrn_notebook_app.ipynb
+notebook/rdp_apis_notebook.ipynb
+
 */.ipynb_checkpoints/*
 mrn_python/
 mrn_trna_sample.json
 mrn_trna_data.txt
 documents/
-notebook/mrn_trna_model.ipynb
+
 console/market_price.py
+console/market_price_rdpgw_service_discovery.py
+console/.env
 dev_resources/
-notebook/mrn_notebook_app.ipynb
+
 python_trna/
 # for RTO
-rto_requirements.txt
-console/market_price_rdpgw_service_discovery.py
-.env
-console/.env
 
-notebook/mrn_realtime_news_notebook_app.ipynb
-notebook/.env
+
+

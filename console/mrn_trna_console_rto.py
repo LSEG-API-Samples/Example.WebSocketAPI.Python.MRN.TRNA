@@ -9,7 +9,7 @@
 """
   This example demonstrates authenticating via Refinitiv Data Platform, using an
   authentication token to discover Refinitiv Real-Time service endpoint, and
-  using the endpoint and authentitcation to retrieve the Machine Readable News content.
+  using the endpoint and authentication to retrieve the Machine Readable News content.
  
   This example maintains a session by proactively renewing the authentication
   token before expiration.
@@ -394,7 +394,7 @@ def get_sts_token(current_refresh_token, url=None):
         data = {'username': user, 'password': password, 'client_id': clientid, 'grant_type': 'password', 'takeExclusiveSignOnControl': True,
                 'scope': scope}
         print('Sending authentication request with password to {} ...'.format(url))
-        print(data)
+        #print(data)
     else:  # Use the given refresh token
         data = {'username': user, 'client_id': clientid, 'refresh_token': current_refresh_token, 'grant_type': 'refresh_token'}
         print("Sending authentication request with refresh token to {} ... ".format(url))

@@ -4,25 +4,23 @@
 - Compiler: Python and Conda distribution
 - Prerequisite: Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution servers version 3.2.1 and above, MRN service
 
-## Project Overview
+## <a id="overview"></a>Project Overview
 
 This project shows how developers may use the [Websocket API for Pricing Streaming and Real-Time Service](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api) aka Websocket API application to consume [Refinitiv News Analytics (TRNA)](https://my.refinitiv.com/content/mytr/en/product/machine-readable-news-analytics.html) data from Refinitiv Real-Time Distribution System (Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server) via Machine Readable News (MRN) domain. The example just connects to Refinitiv Real-Time via a WebSocket connection, then subscribes and shows how to get each TRNA field data in a classic Jupyter Notebook application. The project is implemented with Python language, but the main concept for consuming and assembling MRN and TRNA messages are the same for all technologies. 
 
 You can find the full article regarding this project at [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api) page.
 
-## Prerequisite
-
 This example is focusing on the Refinitiv Machine Readable News (MRN) data processing only. I highly recommend you check the  [WebSocket API Tutorials](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/tutorials) page if you are not familiar with WebSocket API. 
 
 The Tutorials page provides a step-by-step guide (connect, log in, request data, parse data, etc) for developers who are interested in developing a WebSocket application to consume real-time data from Refinitiv Real-Time. 
 
-## Refinitiv News Analytics Overview
+## <a id="news_analytics"></a>Refinitiv News Analytics Overview
 
 [Refinitiv News Analytics (TRNA)](https://my.refinitiv.com/content/mytr/en/product/machine-readable-news-analytics.html) provides real-time numerical insight into the events on multiple news sources, in a format that can be directly consumed by algorithmic trading systems. TRNA enables algorithms to exploit the power of news to seize opportunities, capitalize on market inefficiencies, and manage event risk.
 
 TRNA is published via Refinitiv Real-Time as part of Refinitiv Machine Readable News (MRN) data model. MRN is an advanced service for automating the consumption and systematic analysis of news. It delivers deep historical news archives, ultra-low latency structured news, and news analytics directly to your applications. 
 
-### MRN Data Model
+### <a id="mrn_data_model"></a>MRN Data Model
 
 MRN is published over Refinitiv Real-Time using an Open Message Model (OMM) envelope in News Text Analytics domain messages. The Real-time News content set is made available over MRN_STORY RIC. The content data is contained in a FRAGMENT field that has been compressed and potentially fragmented across multiple messages, to reduce bandwidth and message size.
 
@@ -49,89 +47,145 @@ If you are not familiar with MRN concept, please visit the following resources w
 * [Introduction to Machine Readable News with WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
 * [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api).
 
-## Prerequisite
+## <a id="prerequisite"></a>Prerequisite
 This example requires the following dependencies software  and libraries.
 1. Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server version 3.2.x with WebSocket connection and MRN Service.
-2. [Python](https://www.python.org/) compiler and runtime.
+2. [Python](https://www.python.org/) interpreter and runtime.
 3. Python [Anaconda](https://www.anaconda.com/distribution/) or [MiniConda](https://docs.conda.io/en/latest/miniconda.html) distribution/package manager.
-4. [Classic Jupyter Notebook](https://jupyter.org/) web application.
+4. [JupyterLab](https://jupyter.org/) web application.
 5. RTO Access credentials for the rTO example
 6. Internet connection.
 
 *Note:* 
-- This Project has been qualified with Python version 3.7.6 and Conda version 4.8.1
+- This Project has been qualified with Python version 3.8 and Conda version 4.10
 - If you are not familiar with Jupyter Notebook, the following [tutorial](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook) created by DataCamp may help.
 - It is not advisable to change the Refinitiv Real-Time Distribution System configuration if you are not familiar with the configuration procedures. Please consult your Market Data administrator for any questions regarding Refinitiv Real-Time Distribution System-MRN service configuration.
 - Please contact your Refinitiv's representative to help you to access the RTO account, and services. You can find more detail regarding the RTO access credentials set up from the *Getting Started for Machine ID* section of the [Getting Start with Refinitiv Data Platform article](https://developers.refinitiv.com/en/article-catalog/article/getting-start-with-refinitiv-data-platform) article.
 - Please refer to the [pip installation guide page](https://pip.pypa.io/en/stable/installing/) if your environment does not have the [pip tool](https://pypi.org/project/pip/) installed. 
 
 
-## Application Files
+## <a id="project_files"></a>Application Files
 This example project contains the following files and folders
-1. *notebook_python/mrn_trna_notebook_app.ipynb*: The example Jupyter Notebook application file
-2. *console/mrn_trna_console_app.py*: The  example console application file
-3. *MRN_TRNA_env.yml*: The Jupyter Notebook environment and dependencies configuration file
-4. *requirements.txt*: The console example dependencies configuration file
-5. *LICENSE.md*: Project's license file
-6. *README.md*: Project's README file
+1. *notebook_python/mrn_trna_notebook_app.ipynb*: The example Jupyter Notebook application for the deployed RTDS connection file
+2. *notebook_python/mrn_trna_notebook_app_rto.ipynb*: The example Jupyter Notebook application for the RTO connection file
+3. *console/mrn_trna_console_app.py*: The  example console application for the deployed RTDS connection file
+4. *console/mrn_trna_console_rto.py*: The  example console application  for the RTO connection  file
+5. *requirements.txt*: The basic dependencies configuration file
+6. *LICENSE.md*: Project's license file
+7. *README.md*: Project's README file
 
-## How to run this example
+## <a id="how_to_run"></a>How to run this example
 
 The first step is to unzip or download the example project folder into a directory of your choice, then choose how to run the application based on your environment below.
 
-### Classic Jupyter Notebook example
+### <a id="how_to_setup"></a>Set Up Environment
 
-Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server should have a Service that contains MRN data. 
+It is an advisable to create a dedicate Python environment to run each Python project. You can create a new Conda environment names *MRN_TRNA* with the following steps
 
 1. Open Anaconda Prompt and go to the project's folder
 2. Run the following command in an Anaconda Prompt to create a Conda environment named *MRN_TRNA* for the project.
   ```
-  (base) $>conda env create -f MRN_TRNA_env.yml
+  (base) $>conda create --name MRN_TRNA python=3.8
   ```
 3. Once the environment is created, activate MRN_TRNA environment with this command in Anaconda Prompt
   ```
   (base) $>conda activate MRN_TRNA
   ```
-4. In the current Anaconda Prompt, go to the project's notebook folder. Run the following command to start the classic Jupyter Notebook in the notebook folder.
+4. Run the following command to install the dependencies in the *MRN_TRNA* environment 
   ```
-  (MRN_TRNA) $>jupyter notebook
+  (MRN_TRNA) $>pip install -r requirements.txt
   ```
-5. Open *mrn_trna_notebook_app.ipynb* Notebook document, then follow through each notebook cell.
 
-### A RTDS console example
+### <a id="rtds_jupyter"></a>RTDS Jupyter Notebook example
 
 Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server should have a Service that contains MRN data. 
 
-1. Go to project folder in th
-2. Run ```$> pip install -r requestments.txt``` command in a console to install all the dependencies libraries.
+1. Open Anaconda Prompt and go to the project's folder
+2. Activate MRN_TRNA environment with this command in Anaconda Prompt
+  ```
+  (base) $>conda activate MRN_TRNA
+  ```
+3. Run the following command to install the JupyterLab application in the *MRN_TRNA* environment 
+  ```
+  (MRN_TRNA) $>conda install -c conda-forge jupyterlab
+  ```
+4. In the current Anaconda Prompt, go to the project's notebook folder. Run the following command to start the JupyterLab application in the notebook folder.
+  ```
+  (MRN_TRNA) $>jupyter lab
+  ```
+5. Open *mrn_trna_notebook_app.ipynb* Notebook document, then follow through each notebook cell.
+
+### <a id="rtds_console"></a>RTDS Console example
+
+Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server should have a Service that contains MRN data. 
+
+1. Open Anaconda Prompt and go to the project's folder
+2. Activate MRN_TRNA environment with this command in Anaconda Prompt
+  ```
+  (base) $>conda activate MRN_TRNA
+  ```
 3. Then you can run mrn_console_app.py application with the following command
-    ```
-    $> python mrn_trna_console_app.py --hostname <Real-Time Advanced Distribution Server IP Address/Hostname> --port <WebSocket Port> 
-    ```
+  ```
+  (MRN_TRNA) $> python console/mrn_trna_console_app.py --hostname <Real-Time Advanced Distribution Server IP Address/Hostname> --port <WebSocket Port> 
+  ```
 4. The application subscribes ```MRN_TRNA``` RIC code from Real-Time Advanced Distribution Server by default. 
 
-*Note:* 
+### <a id="rto_jupyter"></a>RTO Jupyter Notebook example
 
+Please be informed that your RTO access credentials should have a permission to request MRN data. 
 
-### A RTO console example
-1. Go to project folder in th
-2. Run ```$> pip install -r requestments.txt``` command in a console to install all the dependencies libraries.
-4. Go to the project's console folder. and create a file name ```.env``` with the following content.
-    ```
-    # RTO Credentials
-    RTO_USER=<Your RTO Machine-ID>
-    RTO_PASSWORD=<Your RTO Password>
-    RTO_APP_KEY=<Your RTO App Key>
+1. Open Anaconda Prompt and go to the project's folder
+2. Activate MRN_TRNA environment with this command in Anaconda Prompt
+  ```
+  (base) $>conda activate MRN_TRNA
+  ```
+3. Run the following command to install the JupyterLab application in the *MRN_TRNA* environment 
+  ```
+  (MRN_TRNA) $>conda install -c conda-forge jupyterlab
+  ```
+4. Go to the project's notebook folder. and create a file name ```.env``` with the following content.
+  ```
+  # RTO Credentials
+  RTO_USER=<Your RTO Machine-ID>
+  RTO_PASSWORD=<Your RTO Password>
+  RTO_APP_KEY=<Your RTO App Key>
 
-    # RDP-RTO Core Configurations
-    RDP_BASE_URL=https://api.refinitiv.com
-    RDP_AUTH_URL=/auth/oauth2/v1/token
-    RDP_DISCOVERY_URL=/streaming/pricing/v1/
-    ```
+  # RDP-RTO Core Configurations
+  RDP_BASE_URL=https://api.refinitiv.com
+  RDP_AUTH_URL=/auth/oauth2/v1/token
+  RDP_DISCOVERY_URL=/streaming/pricing/v1/
+  ```
+5. In the current Anaconda Prompt notebook folder. Run the following command to start the JupyterLab application in the notebook folder.
+  ```
+  (MRN_TRNA) $>jupyter lab
+  ```
+6. Open *mrn_trna_notebook_app_rto.ipynb* Notebook document, then follow through each notebook cell.
+
+### <a id="rto_console"></a>RTO console example
+
+Please be informed that your RTO access credentials should have a permission to request MRN data. 
+
+1. Open Anaconda Prompt and go to the project's folder
+2. Activate MRN_TRNA environment with this command in Anaconda Prompt
+  ```
+  (base) $>conda activate MRN_TRNA
+  ```
+3. Go to the project's console folder. and create a file name ```.env``` with the following content.
+  ```
+  # RTO Credentials
+  RTO_USER=<Your RTO Machine-ID>
+  RTO_PASSWORD=<Your RTO Password>
+  RTO_APP_KEY=<Your RTO App Key>
+
+  # RDP-RTO Core Configurations
+  RDP_BASE_URL=https://api.refinitiv.com
+  RDP_AUTH_URL=/auth/oauth2/v1/token
+  RDP_DISCOVERY_URL=/streaming/pricing/v1/
+  ```
 4. Then you can run mrn_console_app.py application with the following command
-    ```
-    $> python mrn_trna_console_rto.py --ric <MRN_TRNA RIC code by default> 
-    ```
+  ```
+  (MRN_TRNA) $>python console/mrn_trna_console_rto.py --ric <MRN_TRNA RIC code by default> 
+  ```
 
 ## Example Results
 ### Send MRN_STORY request to Real-Time Advanced Distribution Server
