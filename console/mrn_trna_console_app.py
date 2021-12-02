@@ -186,6 +186,7 @@ def process_message(ws, message_json):
 def process_login_response(ws, message_json):
     """ Send item request """
     send_mrn_request(ws)
+    
 
 
 def send_login_request(ws):
@@ -229,7 +230,7 @@ def on_error(ws, error):
     print(error)
 
 
-def on_close(ws):
+def on_close(ws,close_status_code, close_msg):
     """ Called when websocket is closed """
     global web_socket_open
     print("WebSocket Closed")
