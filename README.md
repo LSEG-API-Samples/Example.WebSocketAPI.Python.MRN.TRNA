@@ -10,14 +10,19 @@ This project shows how developers may use the [Websocket API for Pricing Streami
 
 You can find the full article regarding this project at [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api) page.
 
-This example is focusing on the Refinitiv Machine Readable News (MRN) data processing only. I highly recommend you check the  [WebSocket API Tutorials](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/tutorials) page if you are not familiar with WebSocket API. 
+This example project supports all Refinitiv Machine Readable News (MRN) data consumption from Refinitiv Real-Time with the WebSocket API. However, the data model description is focusing on the News Analytics (TRNA) data processing only. 
 
-The Tutorials page provides a step-by-step guide (connect, log in, request data, parse data, etc) for developers who are interested in developing a WebSocket application to consume real-time data from Refinitiv Real-Time. 
+I highly recommend you check the  [WebSocket API Tutorials](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/tutorials) page if you are not familiar with WebSocket API. The Tutorials page provides a step-by-step guide (connect, log in, request data, parse data, etc) for developers who are interested in developing a WebSocket application to consume real-time data from Refinitiv Real-Time. 
+
+If you are focusing on the Real-Time News, please check the following GitHub repositories
+- [Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN).
+- [Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO)
+
 
 **Update (As of December 2021)**: The example now supports the Refinitiv Real-Time -- Optimized (RTO - formerly known as ERT in Cloud) connection.
 * The RTO examples: 
   - mrn_trna_console_rto.py console application file.
-  - Alternatively, please check my colleague's [Example.WebSocketAPI.Python.MRN.RTO](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO) GitHub Repository.
+  - Alternatively, please check my colleague's [Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO) GitHub Repository.
   - mrn_trna_notebook_app_rto.ipynb notebook file.
 * The deployed Refinitiv Real-Time Distribution System (RTDS) examples are mrn_console_app.py console application and mrn_notebook_app.ipynb notebook files.
 
@@ -354,7 +359,7 @@ News = {'analytics': {'analyticsScores': [{'assetClass': 'CMPNY', 'assetCodes': 
 ## References
 For further details, please check out the following resources:
 
-* [Refinitiv Real-Time & Distribution Family page](https://developers.refinitiv.com/en/use-cases-catalog/refinitiv-real-time) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) web site.
+* [Refinitiv Real-Time & Distribution Family page](https://developers.refinitiv.com/en/use-cases-catalog/refinitiv-real-time) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) website.
 * [WebSocket API page](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api).
 * [Developer Webinar Recording: Introduction to WebSocket API](https://www.youtube.com/watch?v=CDKWMsIQfaw).
 * [Refinitiv News Analytics Product page](https://my.refinitiv.com/content/mytr/en/product/machine-readable-news-analytics.html).
@@ -362,6 +367,8 @@ For further details, please check out the following resources:
 * [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api).
 * [Introduction to Machine Readable News (MRN) with Enterprise Message API (EMA)](https://developers.refinitiv.com/en/article-catalog/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
 * [MRN Data Models and Real-Time SDK Implementation Guide](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/rt-sdk-java/documentation#mrn-data-models-implementation-guide).
+* [MRN (Real-Time News) WebSocket Python example on GitHub](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN).
+* [MRN (Real-Time News) WebSocket Python Console example on GitHub](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO)
 * [MRN WebSocket JavaScript example on GitHub](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Javascript.NewsMonitor).
 * [MRN WebSocket C# NewsViewer example on GitHub](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.CSharp.MRNWebSocketViewer).
 
