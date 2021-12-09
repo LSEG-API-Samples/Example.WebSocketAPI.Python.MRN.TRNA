@@ -14,6 +14,13 @@ This example is focusing on the Refinitiv Machine Readable News (MRN) data proce
 
 The Tutorials page provides a step-by-step guide (connect, log in, request data, parse data, etc) for developers who are interested in developing a WebSocket application to consume real-time data from Refinitiv Real-Time. 
 
+**Update (As of December 2021)**: The example now supports the Refinitiv Real-Time -- Optimized (RTO - formerly known as ERT in Cloud) connection.
+* The RTO examples: 
+  - mrn_trna_console_rto.py console application file.
+  - Alternatively, please check my colleague's [Example.WebSocketAPI.Python.MRN.RTO](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO) GitHub Repository.
+  - mrn_trna_notebook_app_rto.ipynb notebook file.
+* The deployed Refinitiv Real-Time Distribution System (RTDS) examples are mrn_console_app.py console application and mrn_notebook_app.ipynb notebook files.
+
 ## <a id="news_analytics"></a>Refinitiv News Analytics Overview
 
 [Refinitiv News Analytics (TRNA)](https://my.refinitiv.com/content/mytr/en/product/machine-readable-news-analytics.html) provides real-time numerical insight into the events on multiple news sources, in a format that can be directly consumed by algorithmic trading systems. TRNA enables algorithms to exploit the power of news to seize opportunities, capitalize on market inefficiencies, and manage event risk.
@@ -53,7 +60,7 @@ This example requires the following dependencies software  and libraries.
 2. [Python](https://www.python.org/) interpreter and runtime.
 3. Python [Anaconda](https://www.anaconda.com/distribution/) or [MiniConda](https://docs.conda.io/en/latest/miniconda.html) distribution/package manager.
 4. [JupyterLab](https://jupyter.org/) web application.
-5. RTO Access credentials for the rTO example.
+5. RTO Access credentials for the RTO example.
 6. Internet connection.
 7. [Docker Desktop/Engine](https://docs.docker.com/get-docker/) version 20.10.x and [DockerHub](https://hub.docker.com/) account (free subscription).
 
@@ -69,8 +76,8 @@ This example requires the following dependencies software  and libraries.
 This example project contains the following files and folders
 1. *notebook_python/mrn_trna_notebook_app.ipynb*: The example Jupyter Notebook application for the deployed RTDS connection file
 2. *notebook_python/mrn_trna_notebook_app_rto.ipynb*: The example Jupyter Notebook application for the RTO connection file
-3. *console/mrn_trna_console_app.py*: The  example console application for the deployed RTDS connection file
-4. *console/mrn_trna_console_rto.py*: The  example console application  for the RTO connection  file
+3. *console/mrn_trna_console_app.py*: The example console application for the deployed RTDS connection file
+4. *console/mrn_trna_console_rto.py*: The example console application  for the RTO connection  file
 5. *requirements.txt*: The basic dependencies configuration file
 6. *LICENSE.md*: Project's license file
 7. *README.md*: Project's README file
@@ -125,7 +132,7 @@ Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv
   ```
   (base) $>conda activate MRN_TRNA
   ```
-3. Then you can run mrn_console_app.py application with the following command
+3. Then you can run mrn_trna_console_app.py application with the following command
   ```
   (MRN_TRNA) $> python console/mrn_trna_console_app.py --hostname <Real-Time Advanced Distribution Server IP Address/Hostname> --port <WebSocket Port> 
   ```
@@ -183,7 +190,7 @@ Please be informed that your RTO access credentials should have a permission to 
   RDP_AUTH_URL=/auth/oauth2/v1/token
   RDP_DISCOVERY_URL=/streaming/pricing/v1/
   ```
-4. Then you can run mrn_console_app.py application with the following command
+4. Then you can run mrn_trna_console_rto.py application with the following command
   ```
   (MRN_TRNA) $>python console/mrn_trna_console_rto.py --ric <MRN_TRNA RIC code by default> 
   ```
