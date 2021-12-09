@@ -154,9 +154,9 @@ Please be informed that your RTO access credentials should have a permission to 
 4. Go to the project's notebook folder. and create a file name ```.env``` with the following content.
   ```
   # RTO Credentials
-  RTO_USER=<Your RTO Machine-ID>
+  RTO_USERNAME=<Your RTO Machine-ID>
   RTO_PASSWORD=<Your RTO Password>
-  RTO_APP_KEY=<Your RTO App Key>
+  RTO_CLIENTID=<Your RTO App Key>
 
   # RDP-RTO Core Configurations
   RDP_BASE_URL=https://api.refinitiv.com
@@ -181,9 +181,9 @@ Please be informed that your RTO access credentials should have a permission to 
 3. Go to the project's console folder. and create a file name ```.env``` with the following content.
   ```
   # RTO Credentials
-  RTO_USER=<Your RTO Machine-ID>
+  RTO_USERNAME=<Your RTO Machine-ID>
   RTO_PASSWORD=<Your RTO Password>
-  RTO_APP_KEY=<Your RTO App Key>
+  RTO_CLIENTID=<Your RTO App Key>
 
   # RDP-RTO Core Configurations
   RDP_BASE_URL=https://api.refinitiv.com
@@ -201,9 +201,9 @@ Please be informed that your RTO access credentials should have a permission to 
 1. Go to the project folder in a console and create a file name ```.env``` in a ```console``` folder with the following content.
   ```
   # RTO Credentials
-  RTO_USER=<Your RTO Machine-ID>
+  RTO_USERNAME=<Your RTO Machine-ID>
   RTO_PASSWORD=<Your RTO Password>
-  RTO_APP_KEY=<Your RTO App Key>
+  RTO_CLIENTID=<Your RTO App Key>
 
   # RDP-RTO Core Configurations
   RDP_BASE_URL=https://api.refinitiv.com
@@ -227,9 +227,9 @@ Please be informed that your RTO access credentials should have a permission to 
 1. Go to the project folder in a console and create a file name ```.env``` in a ```notebook``` folder with the following content.
   ```
   # RTO Credentials
-  RTO_USER=<Your RTO Machine-ID>
+  RTO_USERNAME=<Your RTO Machine-ID>
   RTO_PASSWORD=<Your RTO Password>
-  RTO_APP_KEY=<Your RTO App Key>
+  RTO_CLIENTID=<Your RTO App Key>
 
   # RDP-RTO Core Configurations
   RDP_BASE_URL=https://api.refinitiv.com
