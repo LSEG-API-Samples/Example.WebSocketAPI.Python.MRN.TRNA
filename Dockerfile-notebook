@@ -1,7 +1,7 @@
 # Start from a core stack version
 FROM jupyter/scipy-notebook:33add21fab64
 
-LABEL maintainer="Data Scientists <email>"
+LABEL maintainer="Wasin Waeosri <wasin.waeosri@lseg.com>"
 
 # Install from requirements.txt file
 COPY --chown=${NB_UID}:${NB_GID} requirements.txt /tmp/

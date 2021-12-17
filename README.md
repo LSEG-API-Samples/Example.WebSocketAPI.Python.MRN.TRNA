@@ -81,11 +81,16 @@ This example requires the following dependencies software  and libraries.
 This example project contains the following files and folders
 1. *notebook_python/mrn_trna_notebook_app.ipynb*: The example Jupyter Notebook application for the deployed RTDS connection file
 2. *notebook_python/mrn_trna_notebook_app_rto.ipynb*: The example Jupyter Notebook application for the RTO connection file
-3. *console/mrn_trna_console_app.py*: The example console application for the deployed RTDS connection file
-4. *console/mrn_trna_console_rto.py*: The example console application  for the RTO connection  file
-5. *requirements.txt*: The basic dependencies configuration file
-6. *LICENSE.md*: Project's license file
-7. *README.md*: Project's README file
+3. *notebook_python/.env.example*: The example ```.env``` file for the RTO connection notebook.
+4. *console/mrn_trna_console_app.py*: The example console application for the deployed RTDS connection file
+5. *console/mrn_trna_console_rto.py*: The example console application  for the RTO connection  file
+6. *console/.env.example*: The example ```.env``` file for the RTO connection console application.
+7. *requirements.txt*: The basic dependencies configuration file
+8. *Dockerfile*: The RTO console application Dockerfile
+9. *Dockerfile-notebook*: The RTO notebook application Dockerfile
+10. *LICENSE.md*: Project's license file
+11. *README.md*: Project's README file
+12. .gitignore and .dockerignore: Docker and Git ignore files.
 
 ## <a id="how_to_run"></a>How to run this example
 
@@ -199,6 +204,9 @@ Please be informed that your RTO access credentials should have a permission to 
   ```
   (MRN_TRNA) $>python console/mrn_trna_console_rto.py --ric <MRN_TRNA RIC code by default> 
   ```
+
+Alternatively, please check my colleague's [Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO) GitHub Repository.
+
 ### <a id="rto_console_docker"></a>Bonus: RTO console Docker example
 
 Please be informed that your RTO access credentials should have a permission to request MRN data. 
