@@ -364,7 +364,7 @@ News = {'analytics': {'analyticsScores': [{'assetClass': 'CMPNY', 'assetCodes': 
  'N2:SWASIA', 'N2:ASIA', 'N2:ASXPAC', 'N2:LEN'], 'urgency': 3}}
 ```
 
-## References
+## <a id="references"></a>References
 For further details, please check out the following resources:
 
 * [Refinitiv Real-Time & Distribution Family page](https://developers.refinitiv.com/en/use-cases-catalog/refinitiv-real-time) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) website.
