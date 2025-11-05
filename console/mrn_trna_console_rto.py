@@ -3,7 +3,7 @@
 # |            This source code is provided under the Apache 2.0 license      --
 # |  and is provided AS IS with no warranty or guarantee of fit for purpose.  --
 # |                See the project's LICENSE.md for details.                  --
-# |            Copyright (C) 2018-2021 Refinitiv. All rights reserved.        --
+# |            Copyright (C) 2018-2025 LSEG. All rights reserved.             --
 # |-----------------------------------------------------------------------------
 
 """
@@ -43,7 +43,7 @@ user = ''
 clientid = ''
 client_secret = ''
 scope = 'trapi.streaming.pricing.read'
-region = 'us-east-1'
+region = 'ap-southeast-1'
 ric = 'MRN_TRNA'
 service = 'ELEKTRON_DD'
 hostList = []
@@ -90,19 +90,22 @@ class WebSocketSession:
     
     # Decode and print incoming JSON FieldList data
     def decodeFieldList(self, fieldList_dict):
+        """
+        Decode and print incoming JSON FieldList data
+        """
         for key, value in fieldList_dict.items():
             #print('Name = %s: Value = %s' % (key, value))
             print('Name = {}: Value = {}'.format(key, value))
     
     # Decode and process incoming Refresh message
     def processRefresh(self, message_json):
-
+        """Process Refresh Message"""
         print('RECEIVED: Refresh Message')
         self.decodeFieldList(message_json['Fields'])
     
     # process incoming News Update messages
     def processMRNUpdate(self, message_json):  
-
+        """ Process MRN Update Message """
         fields_data = message_json['Fields']
         # Dump the FieldList first (for informational purposes)
         # decodeFieldList(message_json["Fields"])
@@ -184,7 +187,8 @@ class WebSocketSession:
         except Exception as e:
             print('exception: ', sys.exc_info()[0])
     
-    def processStatus( self, message_json):  # process incoming status message
+    def processStatus( self, message_json):
+        """ Process Status Message """
         print('RECEIVED: Status Message')
         print(json.dumps(message_json, sort_keys=True, indent=2, separators=(',', ':')))
 

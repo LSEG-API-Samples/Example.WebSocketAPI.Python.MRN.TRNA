@@ -24,6 +24,8 @@ dev_resources/
 
 python_trna/
 # for RTO
+venv/
+nbvenv/
 
 
 

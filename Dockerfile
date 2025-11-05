@@ -1,20 +1,17 @@
 #Build stage 
-FROM python:3.8.12-alpine3.15 AS builder 
-#FROM python:3.8.12-slim-buster AS builder
+FROM docker.io/python:3.11.14-slim AS builder 
 
-LABEL maintainer="Wasin Waeosri <wasin.waeosri@lseg.com>"
+LABEL maintainer="LSEG Developer Relations Team"
 
-# Install build-base + gcc + musl-dev, for alpine3 only
-RUN apk update && apk add --no-cache build-base gcc musl-dev 
 #Copy requirements.txt
 COPY requirements.txt .
 
 # install dependencies to the local user directory (eg. /root/.local)
-RUN pip install --user -r requirements.txt
+RUN pip install --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --trusted-host pypi.org --no-cache-dir --user -r requirements.txt
 
 # Run stage
 #FROM python:3.8.11-alpine3.14
-FROM python:3.8.12-alpine3.15
+FROM docker.io/python:3.11-alpine3.21
 WORKDIR /app
 
 # Update PATH environment variable + set Python buffer to make Docker print every message instantly.

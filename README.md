@@ -1,44 +1,50 @@
 # How to get Machine Readable News Analytics via  WebSocket API with Python
-- Last update: Dec 2021
+- Last update: Oct 2025
 - Environment: Windows
 - Compiler: Python and Conda distribution
-- Prerequisite: Refinitiv Real-Time Distribution System version 3.2.1 and above, or Refinitiv Real-Time -- Optimized credentials, and MRN service
+- Prerequisite: Real-Time Distribution System version 3.2.1 and above, or Real-Time -- Optimized credentials, and MRN service
 
 ## <a id="overview"></a>Project Overview
 
-This project shows how developers may use the [Websocket API for Pricing Streaming and Real-Time Service](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api) aka Websocket API application to consume [Refinitiv News Analytics (TRNA)](https://my.refinitiv.com/content/mytr/en/product/machine-readable-news-analytics.html) data from Refinitiv Real-Time Distribution System (Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server) via Machine Readable News (MRN) domain. The example just connects to Refinitiv Real-Time via a WebSocket connection, then subscribes and shows how to get each TRNA field data in a classic Jupyter Notebook application. The project is implemented with Python language, but the main concept for consuming and assembling MRN and TRNA messages are the same for all technologies. 
+This project shows how developers may use the [Real-Time WebSocket API](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/websocket-api) aka Websocket API application to consume [Machine Readable News Analytics (TRNA)](https://www.lseg.com/en/data-analytics/financial-news-service/machine-readable-news) data from the Real-Time Distribution System via Machine Readable News (MRN) domain. The example just connects to the Real-Time platform via a WebSocket connection, then subscribes and shows how to get each TRNA field data in a classic Jupyter Notebook application. The project is implemented with Python language, but the main concept for consuming and assembling MRN and TRNA messages are the same for all technologies. 
 
-You can find the full article regarding this project at [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api) page.
+You can find the full article regarding this project at [How to get MRN News Analytics Data via WebSocket API](https://developers.lseg.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api) page.
 
-This example project supports all Refinitiv Machine Readable News (MRN) data consumption from Refinitiv Real-Time with the WebSocket API. However, the data model description is focusing on the News Analytics (TRNA) data processing only. 
+This example project supports all  Machine Readable News (MRN) data consumption from Real-Time platform with the WebSocket API. However, the data model description is focusing on the News Analytics (TRNA) data processing only. 
 
-I highly recommend you check the  [WebSocket API Tutorials](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api/tutorials) page if you are not familiar with WebSocket API. The Tutorials page provides a step-by-step guide (connect, log in, request data, parse data, etc) for developers who are interested in developing a WebSocket application to consume real-time data from Refinitiv Real-Time. 
+I highly recommend you check the  [WebSocket API Tutorials](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/websocket-api/tutorials) page if you are not familiar with WebSocket API. The Tutorials page provides a step-by-step guide (connect, log in, request data, parse data, etc) for developers who are interested in developing a WebSocket application to consume real-time data from the Real-Time platform. 
 
 If you are focusing on the Real-Time News, please check the following GitHub repositories
-- [Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN).
-- [Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO)
+- [LSEG-API-Samples/Example.WebSocketAPI.Python.MRN](https://github.com/LSEG-API-Samples/Example.WebSocketAPI.Python.MRN).
+- [LSEG-API-Samples/Example.WebSocketAPI.Python.MRN.RTO](https://github.com/LSEG-API-Samples/Example.WebSocketAPI.Python.MRN.RTO)
 
 
-**Update (As of December 2021)**: The example now supports the Refinitiv Real-Time -- Optimized (RTO - formerly known as ERT in Cloud) connection.
-* The RTO examples: 
+**Update (As of December 2021)**: The example now supports the Real-Time -- Optimized (RTO - formerly known as ERT in Cloud) connection.
+* The RTO (Authentication V1 - Machine) examples: 
   - mrn_trna_console_rto.py console application file.
-  - Alternatively, please check my colleague's [Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO) GitHub Repository.
+  - Alternatively, please check my colleague's [LSEG-API-Samples/Example.WebSocketAPI.Python.MRN.RTO](https://github.com/LSEG-API-Samples/Example.WebSocketAPI.Python.MRN.RTO) GitHub Repository.
   - mrn_trna_notebook_app_rto.ipynb notebook file.
-* The deployed Refinitiv Real-Time Distribution System (RTDS) examples are mrn_console_app.py console application and mrn_notebook_app.ipynb notebook files.
+* The deployed LSEG Real-Time Distribution System (RTDS) examples are mrn_console_app.py console application and mrn_notebook_app.ipynb notebook files.
+
+The RTO examples are based on the Version 1 Authentication (Machine-ID). If you want to use the Version 2 Authentication (Service-ID), please check the following resources:
+
+- [Real-Time WebSocket API: The Real-Time Optimized Version 2 Authentication Migration Guide](https://developers.lseg.com/en/article-catalog/article/webSocket-api-rto-v2-authentication-migration-guide).
+- [Migrating the WebSocket Machine Readable News Application to Version 2 Authentication](https://developers.lseg.com/en/article-catalog/article/migrating-the-websocket-machine-readable-news-to-rto-v2).
 
 ## <a id="news_analytics"></a>Refinitiv News Analytics Overview
 
-[Refinitiv News Analytics (TRNA)](https://my.refinitiv.com/content/mytr/en/product/machine-readable-news-analytics.html) provides real-time numerical insight into the events on multiple news sources, in a format that can be directly consumed by algorithmic trading systems. TRNA enables algorithms to exploit the power of news to seize opportunities, capitalize on market inefficiencies, and manage event risk.
+[Machine Readable News Analytics (TRNA)](https://www.lseg.com/en/data-analytics/financial-news-service/machine-readable-news) provides real-time numerical insight into the events on multiple news sources, in a format that can be directly consumed by algorithmic trading systems. TRNA enables algorithms to exploit the power of news to seize opportunities, capitalize on market inefficiencies, and manage event risk.
 
-TRNA is published via Refinitiv Real-Time as part of Refinitiv Machine Readable News (MRN) data model. MRN is an advanced service for automating the consumption and systematic analysis of news. It delivers deep historical news archives, ultra-low latency structured news, and news analytics directly to your applications. 
+TRNA is published via the Real-Time Platform as part of Machine Readable News (MRN) data model. MRN is an advanced service for automating the consumption and systematic analysis of news. It delivers deep historical news archives, ultra-low latency structured news, and news analytics directly to your applications. 
 
 ### <a id="mrn_data_model"></a>MRN Data Model
 
-MRN is published over Refinitiv Real-Time using an Open Message Model (OMM) envelope in News Text Analytics domain messages. The Real-time News content set is made available over MRN_STORY RIC. The content data is contained in a FRAGMENT field that has been compressed and potentially fragmented across multiple messages, to reduce bandwidth and message size.
+MRN is published over the Real-Time Platform using an Open Message Model (OMM) envelope in News Text Analytics domain messages. The Real-time News content set is made available over MRN_STORY RIC. The content data is contained in a FRAGMENT field that has been compressed and potentially fragmented across multiple messages, to reduce bandwidth and message size.
 
 A FRAGMENT field has a different data type based on a connection type:
-* RSSL connection (RTSDK [C++](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/rt-sdk-cc)/[Java](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/rt-sdk-java)): BUFFER type
-* WebSocket connection: Base64 ASCII string
+
+- RSSL connection (RTSDK [C++](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/rt-sdk-cc)/[C#](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/rt-sdk-csharp)/[Java](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/rt-sdk-java)): BUFFER type
+- WebSocket connection: Base64 ASCII string
 
 The data goes through the following series of transformations:
 
@@ -52,28 +58,30 @@ The data goes through the following series of transformations:
 Therefore, to parse the core content data, the application will need to reverse this process. The WebSocket application also needs to convert a received Base64 string in a FRAGMENT field to bytes data before further process this field. This application uses Python [base64](https://docs.python.org/3/library/base64.html) and [zlib](https://docs.python.org/3/library/zlib.html) modules to decode Base64 string and decompress JSON string. 
 
 If you are not familiar with MRN concept, please visit the following resources which will give you a full explanation of the MRN data model and implementation logic:
-* [Webinar Recording: Introduction to Machine Readable News](https://developers.refinitiv.com/news#news-accordion-nid-12045)
-* [Introduction to Machine Readable News (MRN) with Enterprise Message API (EMA)](https://developers.refinitiv.com/en/article-catalog/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
-* [News Analytics Data Models and User Guide section in My Refinitiv's TRNA page](https://my.refinitiv.com/content/mytr/en/product/thomson-reuters-news-analytics.html).
-* [MRN Data Models and Refinitiv Real-Time SDK Implementation Guide](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/rt-sdk-java/documentation#mrn-data-models-implementation-guide).
-* [Introduction to Machine Readable News with WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
-* [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api).
+
+* [Webinar Recording: Introduction to Machine Readable News](https://developers.lseg.com/news#news-accordion-nid-12045)
+* [Introduction to Machine Readable News (MRN) with Enterprise Message API (EMA)](https://developers.lseg.com/en/article-catalog/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
+* [MRN Data Models and Refinitiv Real-Time SDK Implementation Guide](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/rt-sdk-java/documentation#mrn-data-models-and-elektron-implementation-guide).
+* [Introduction to Machine Readable News with WebSocket API](https://developers.lseg.com/en/article-catalog/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
+* [How to get MRN News Analytics Data via WebSocket API](https://developers.lseg.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api).
 
 ## <a id="prerequisite"></a>Prerequisite
+
 This example requires the following dependencies software  and libraries.
-1. Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server version 3.2.x with WebSocket connection and MRN Service.
+
+1. The Real-Time Advanced Data Hub (ADH) and  Real-Time Advanced Distribution Server (ADS) version 3.2.x with WebSocket connection and MRN Service.
 2. [Python](https://www.python.org/) interpreter and runtime.
 3. Python [Anaconda](https://www.anaconda.com/distribution/) or [MiniConda](https://docs.conda.io/en/latest/miniconda.html) distribution/package manager.
 4. [JupyterLab](https://jupyter.org/) web application.
 5. RTO Access credentials for the RTO example.
 6. Internet connection.
-7. [Docker Desktop/Engine](https://docs.docker.com/get-docker/) version 20.10.x and [DockerHub](https://hub.docker.com/) account (free subscription).
+7. [Docker Desktop/Engine](https://docs.docker.com/get-docker/) version 20.10.x and [DockerHub](https://hub.docker.com/) account (free subscription) or Podman.
 
 *Note:* 
-- This Project has been qualified with Python version 3.8 and Conda version 4.10
+- This Project has been qualified with Python version 3.11
 - If you are not familiar with Jupyter Notebook, the following [tutorial](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook) created by DataCamp may help.
-- It is not advisable to change the Refinitiv Real-Time Distribution System configuration if you are not familiar with the configuration procedures. Please consult your Market Data administrator for any questions regarding Refinitiv Real-Time Distribution System-MRN service configuration.
-- Please contact your Refinitiv's representative to help you to access the RTO account, and services. You can find more detail regarding the RTO access credentials set up from the *Getting Started for Machine ID* section of the [Getting Start with Refinitiv Data Platform article](https://developers.refinitiv.com/en/article-catalog/article/getting-start-with-refinitiv-data-platform) article.
+- It is not advisable to change the Real-Time Distribution System configuration if you are not familiar with the configuration procedures. Please consult your Market Data administrator for any questions regarding Real-Time Distribution System-MRN service configuration.
+- Please contact your LSEG representative to help you to access the RTO account, and services. You can find more detail regarding the RTO access credentials set up from the *Getting Started for Machine ID* section of the [Getting Start with Data Platform article](https://developers.lseg.com/en/article-catalog/article/getting-start-with-refinitiv-data-platform) article.
 - Please refer to the [pip installation guide page](https://pip.pypa.io/en/stable/installing/) if your environment does not have the [pip tool](https://pypi.org/project/pip/) installed. 
 
 
@@ -86,8 +94,8 @@ This example project contains the following files and folders
 5. *console/mrn_trna_console_rto.py*: The example console application  for the RTO connection  file
 6. *console/.env.example*: The example ```.env``` file for the RTO connection console application.
 7. *requirements.txt*: The basic dependencies configuration file
-8. *Dockerfile*: The RTO console application Dockerfile
-9. *Dockerfile-notebook*: The RTO notebook application Dockerfile
+8. *requirements_notebook.txt*: The jupyter dependencies configuration file
+9. *Dockerfile*: The RTO console application Dockerfile
 10. *LICENSE.md*: Project's license file
 11. *README.md*: Project's README file
 12. .gitignore and .dockerignore: Docker and Git ignore files.
@@ -103,7 +111,7 @@ It is an advisable to create a dedicate Python environment to run each Python pr
 1. Open Anaconda Prompt and go to the project's folder
 2. Run the following command in an Anaconda Prompt to create a Conda environment named *MRN_TRNA* for the project.
   ```
-  (base) $>conda create --name MRN_TRNA python=3.8
+  (base) $>conda create --name MRN_TRNA python=3.11
   ```
 3. Once the environment is created, activate MRN_TRNA environment with this command in Anaconda Prompt
   ```
@@ -116,7 +124,7 @@ It is an advisable to create a dedicate Python environment to run each Python pr
 
 ### <a id="rtds_jupyter"></a>RTDS Jupyter Notebook example
 
-Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server should have a Service that contains MRN data. 
+Please be informed that your Real-Time Advanced Data Hub and Real-Time Advanced Distribution Server should have a Service that contains MRN data. 
 
 1. Open Anaconda Prompt and go to the project's folder
 2. Activate MRN_TRNA environment with this command in Anaconda Prompt
@@ -125,7 +133,7 @@ Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv
   ```
 3. Run the following command to install the JupyterLab application in the *MRN_TRNA* environment 
   ```
-  (MRN_TRNA) $>conda install -c conda-forge jupyterlab
+  (MRN_TRNA) $>pip install -r requirements_notebook.txt
   ```
 4. In the current Anaconda Prompt, go to the project's notebook folder. Run the following command to start the JupyterLab application in the notebook folder.
   ```
@@ -135,7 +143,7 @@ Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv
 
 ### <a id="rtds_console"></a>RTDS Console example
 
-Please be informed that your Refinitiv Real-Time Advanced Data Hub and Refinitiv Real-Time Advanced Distribution Server should have a Service that contains MRN data. 
+Please be informed that your Real-Time Advanced Data Hub and Real-Time Advanced Distribution Server should have a Service that contains MRN data. 
 
 1. Open Anaconda Prompt and go to the project's folder
 2. Activate MRN_TRNA environment with this command in Anaconda Prompt
@@ -159,7 +167,7 @@ Please be informed that your RTO access credentials should have a permission to 
   ```
 3. Run the following command to install the JupyterLab application in the *MRN_TRNA* environment 
   ```
-  (MRN_TRNA) $>conda install -c conda-forge jupyterlab
+  (MRN_TRNA) $>pip install -r requirements_notebook.txt
   ```
 4. Go to the project's notebook folder. and create a file name ```.env``` with the following content.
   ```
@@ -205,7 +213,7 @@ Please be informed that your RTO access credentials should have a permission to 
   (MRN_TRNA) $>python console/mrn_trna_console_rto.py --ric <MRN_TRNA RIC code by default> 
   ```
 
-Alternatively, please check my colleague's [Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO) GitHub Repository.
+Alternatively, please check my colleague's [LSEG-API-Samples/Example.WebSocketAPI.Python.MRN.RTO](https://github.com/LSEG-API-Samples/Example.WebSocketAPI.Python.MRN.RTO) GitHub Repository.
 
 ### <a id="rto_console_docker"></a>Bonus: RTO console Docker example
 
@@ -233,35 +241,6 @@ Please be informed that your RTO access credentials should have a permission to 
   ```
 4. Press Ctrl+C buttons to stop the application
 
-### <a id="rto_jupyter_docker"></a>Bonus: RTO Jupyter Docker example
-
-Please be informed that your RTO access credentials should have a permission to request MRN data. 
-
-1. Go to the project folder in a console and create a file name ```.env``` in a ```notebook``` folder with the following content.
-  ```
-  # RTO Credentials
-  RTO_USERNAME=<Your RTO Machine-ID>
-  RTO_PASSWORD=<Your RTO Password>
-  RTO_CLIENTID=<Your RTO App Key>
-
-  # RDP-RTO Core Configurations
-  RDP_BASE_URL=https://api.refinitiv.com
-  RDP_AUTH_URL=/auth/oauth2/v1/token
-  RDP_DISCOVERY_URL=/streaming/pricing/v1/
-  ```
-2. Run ```$> docker build -f Dockerfile-notebook -t <project tag name> .``` command in a console to build an image from a Dockerfile-notebook.
-  ```
-  $> docker build -f Dockerfile-notebook -t mrn_notebook .
-  ```
-3. Once the build is a success, you can create and run the container with the following command
-  ```
-  $> docker run -p 8888:8888 --name notebook -v <project /notebook/ directory>:/home/jovyan/work --env-file ./notebook/.env -it mrn_notebook
-  ```
-4. The mrn_notebook container will run the Jupyter server and print the server URL in a console. 
-5. Open the notebook server URL in your browser, the web browser will start the JupyterLab application.
-6. Press Ctrl+C buttons to stop the application
-
-For more detail regarding how to use Docker with Jupyter, please check this [Article.RDP.RDPLibrary.Python.R.JupyterDocker](https://github.com/Refinitiv-API-Samples/Article.RDP.RDPLibrary.Python.R.JupyterDocker) project.
 
 ## Example Results
 ### Send MRN_STORY request to Real-Time Advanced Distribution Server
@@ -367,17 +346,19 @@ News = {'analytics': {'analyticsScores': [{'assetClass': 'CMPNY', 'assetCodes': 
 ## <a id="references"></a>References
 For further details, please check out the following resources:
 
-* [Refinitiv Real-Time & Distribution Family page](https://developers.refinitiv.com/en/use-cases-catalog/refinitiv-real-time) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) website.
-* [WebSocket API page](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/refinitiv-websocket-api).
-* [Developer Webinar Recording: Introduction to WebSocket API](https://www.youtube.com/watch?v=CDKWMsIQfaw).
-* [Refinitiv News Analytics Product page](https://my.refinitiv.com/content/mytr/en/product/machine-readable-news-analytics.html).
-* [Introduction to Machine Readable News with WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
-* [How to get MRN News Analytics Data via WebSocket API](https://developers.refinitiv.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api).
-* [Introduction to Machine Readable News (MRN) with Enterprise Message API (EMA)](https://developers.refinitiv.com/en/article-catalog/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
-* [MRN Data Models and Real-Time SDK Implementation Guide](https://developers.refinitiv.com/en/api-catalog/refinitiv-real-time-opnsrc/rt-sdk-java/documentation#mrn-data-models-implementation-guide).
-* [MRN (Real-Time News) WebSocket Python example on GitHub](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN).
-* [MRN (Real-Time News) WebSocket Python Console example on GitHub](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Python.MRN.RTO)
-* [MRN WebSocket JavaScript example on GitHub](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.Javascript.NewsMonitor).
-* [MRN WebSocket C# NewsViewer example on GitHub](https://github.com/Refinitiv-API-Samples/Example.WebSocketAPI.CSharp.MRNWebSocketViewer).
+- [LSEG Real-Time products family page](https://developers.lseg.com/en/use-cases-catalog/real-time) on the [LSEG Developers Community](https://developers.lseg.com/) website.
+- [WebSocket API page](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/websocket-api).
+- [Developer Webinar Recording: Introduction to Electron WebSocket API](https://www.youtube.com/watch?v=CDKWMsIQfaw).
+- [News Analytics Product page](https://myaccount.lseg.com/en/product/machine-readable-news-analytics).
+- [Introduction to Machine Readable News with WebSocket API](https://developers.lseg.com/en/article-catalog/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
+- [Introduction to Machine Readable News (MRN) with Enterprise Message API (EMA)](https://developers.lseg.com/en/article-catalog/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
+- [MRN Data Models and Real-Time SDK Implementation Guide](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/rt-sdk-java/documentation#mrn-data-models-and-elektron-implementation-guide).
+- [MRN (Real-Time News) WebSocket Python example on GitHub](https://github.com/LSEG-API-Samples/Example.WebSocketAPI.Python.MRN).
+- [MRN (Real-Time News) WebSocket Python Console example on GitHub](https://github.com/LSEG-API-Samples/Example.WebSocketAPI.Python.MRN.RTO)
+- [MRN WebSocket JavaScript example on GitHub](https://github.com/LSEG-API-Samples/Example.WebSocketAPI.Javascript.NewsMonitor).
+- [MRN WebSocket C# NewsViewer example on GitHub](https://github.com/LSEG-API-Samples/Example.WebSocketAPI.CSharp.MRNWebSocketViewer).
+- [Real-Time WebSocket API: The Real-Time Optimized Version 2 Authentication Migration Guide](https://developers.lseg.com/en/article-catalog/article/webSocket-api-rto-v2-authentication-migration-guide).
+- [Migrating the WebSocket Machine Readable News Application to Version 2 Authentication](https://developers.lseg.com/en/article-catalog/article/migrating-the-websocket-machine-readable-news-to-rto-v2).
 
-For any question related to this example or WebSocket API, please use the Developer Community [Q&A Forum](https://community.developers.refinitiv.com/spaces/152/websocket-api.html).
+
+For any question related to this example or WebSocket API, please use the Developer Community [Q&A Forum](https://community.developers.refinitiv.com).

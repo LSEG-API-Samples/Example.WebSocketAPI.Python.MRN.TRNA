@@ -2,7 +2,7 @@
 # |            This source code is provided under the Apache 2.0 license      --
 # |  and is provided AS IS with no warranty or guarantee of fit for purpose.  --
 # |                See the project's LICENSE.md for details.                  --
-# |           Copyright Refinitiv 2019. All rights reserved.            --
+# |           Copyright LSEG 2025. All rights reserved.            --
 # |-----------------------------------------------------------------------------
 
 
@@ -40,7 +40,7 @@ _news_envelopes = []
 
 def decodeFieldList(fieldList_dict):
     for key, value in fieldList_dict.items():
-        print("Name = %s: Value = %s" % (key, value))
+        print('Name = %s: Value = %s' % (key, value))
 
 
 def send_mrn_request(ws):
@@ -59,13 +59,13 @@ def send_mrn_request(ws):
 
 
 def processRefresh(ws, message_json):
-
+    """Process incoming refresh message"""
     print("RECEIVED: Refresh Message")
     decodeFieldList(message_json["Fields"])
 
 
 def processMRNUpdate(ws, message_json):  # process incoming News Update messages
-
+    """"""
     fields_data = message_json["Fields"]
     # Dump the FieldList first (for informational purposes)
     # decodeFieldList(message_json["Fields"])
@@ -87,20 +87,19 @@ def processMRNUpdate(ws, message_json):  # process incoming News Update messages
 
         if frag_num > 1:  # We are now processing more than one part of an envelope - retrieve the current details
             guid_index = next((index for (index, d) in enumerate(
-                _news_envelopes) if d["guid"] == guid), None)
+                _news_envelopes) if d['guid'] == guid), None)
             envelop = _news_envelopes[guid_index]
-            if envelop and envelop["data"]["mrn_src"] == mrn_src and frag_num == envelop["data"]["frag_num"] + 1:
-                print("process multiple fragments for guid %s" %
-                      envelop["guid"])
+            if envelop and envelop['data']['mrn_src'] == mrn_src and frag_num == envelop['data']['frag_num'] + 1:
+                print('process multiple fragments for guid %s' % envelop['guid'])
 
                 #print("fragment before merge = %d" % len(envelop["data"]["fragment"]))
 
                 # Merge incoming data to existing news envelop and getting FRAGMENT and TOT_SIZE data to local variables
-                fragment = envelop["data"]["fragment"] = envelop["data"]["fragment"] + fragment
-                envelop["data"]["frag_num"] = frag_num
-                tot_size = envelop["data"]["tot_size"]
-                print("TOT_SIZE = %d" % tot_size)
-                print("Current FRAGMENT length = %d" % len(fragment))
+                fragment = envelop['data']['fragment'] = envelop['data']['fragment'] + fragment
+                envelop['data']['frag_num'] = frag_num
+                tot_size = envelop['data']['tot_size']
+                print('TOT_SIZE = %d' % tot_size)
+                print('Current FRAGMENT length = %d' % len(fragment))
 
                 # The multiple fragments news are not completed, waiting.
                 if tot_size != len(fragment):
@@ -109,31 +108,30 @@ def processMRNUpdate(ws, message_json):  # process incoming News Update messages
                 elif tot_size == len(fragment):
                     del _news_envelopes[guid_index]
             else:
-                print("Error: Cannot find fragment for GUID %s with matching FRAG_NUM or MRN_SRC %s" % (
-                    guid, mrn_src))
+                print('Error: Cannot find fragment for GUID %s with matching FRAG_NUM or MRN_SRC %s' % (guid, mrn_src))
                 return None
         else:  # FRAG_NUM = 1 The first fragment
             tot_size = int(fields_data["TOT_SIZE"])
-            print("FRAGMENT length = %d" % len(fragment))
+            print('FRAGMENT length = %d' % len(fragment))
             # The fragment news is not completed, waiting and add this news data to envelop object.
             if tot_size != len(fragment):
-                print("Add new fragments to news envelop for guid %s" % guid)
+                print('Add new fragments to news envelop for guid %s' % guid)
                 _news_envelopes.append({  # the envelop object is a Python dictionary with GUID as a key and other fields are data
-                    "guid": guid,
-                    "data": {
-                        "fragment": fragment,
-                        "mrn_src": mrn_src,
-                        "frag_num": frag_num,
-                        "tot_size": tot_size
+                    'guid': guid,
+                    'data': {
+                        'fragment': fragment,
+                        'mrn_src': mrn_src,
+                        'frag_num': frag_num,
+                        'tot_size': tot_size
                     }
                 })
                 return None
 
         # News Fragment(s) completed, decompress and print data as JSON to console
         if tot_size == len(fragment):
-            print("decompress News FRAGMENT(s) for GUID  %s" % guid)
+            print('decompress News FRAGMENT(s) for GUID  %s' % guid)
             decompressed_data = zlib.decompress(fragment, zlib.MAX_WBITS | 32)
-            print("News = %s" % json.loads(decompressed_data))
+            print('News = %s' % json.loads(decompressed_data))
 
     except KeyError as keyerror:
         print('KeyError exception: ', keyerror)
@@ -151,43 +149,43 @@ def processMRNUpdate(ws, message_json):  # process incoming News Update messages
         print('exception: ', sys.exc_info()[0])
 
 
-def processStatus(ws, message_json):  # process incoming status message
+def processStatus(ws, message_json):  
+    """ Process incoming status message """
     print("RECEIVED: Status Message")
     print(json.dumps(message_json, sort_keys=True, indent=2, separators=(',', ':')))
 
 
-''' JSON-OMM Process functions '''
-
+# JSON-OMM Process functions
 
 def process_message(ws, message_json):
     """ Parse at high level and output JSON of message """
     message_type = message_json['Type']
 
-    if message_type == "Refresh":
+    if message_type == 'Refresh':
         if "Domain" in message_json:
-            message_domain = message_json["Domain"]
-            if message_domain == "Login":
+            message_domain = message_json[' Domain']
+            if message_domain == 'Login':
+                """ Process login response and send item request """
                 process_login_response(ws, message_json)
             elif message_domain:
+                """ Process Data refresh messages """
                 processRefresh(ws, message_json)
-    elif message_type == "Update":
-        if "Domain" in message_json and message_json["Domain"] == mrn_domain:
+    elif message_type == 'Update':
+        if 'Domain' in message_json and message_json['Domain'] == mrn_domain:
+            """ Process MRN Update messages """
             processMRNUpdate(ws, message_json)
-    elif message_type == "Status":
+    elif message_type == 'Status':
         processStatus(ws, message_json)
-    elif message_type == "Ping":
+    elif message_type == 'Ping':
         pong_json = {'Type': 'Pong'}
         ws.send(json.dumps(pong_json))
         print("SENT:")
-        print(json.dumps(pong_json, sort_keys=True,
-                         indent=2, separators=(',', ':')))
+        print(json.dumps(pong_json, sort_keys=True,indent=2, separators=(',', ':')))
 
 
 def process_login_response(ws, message_json):
     """ Send item request """
     send_mrn_request(ws)
-    
-
 
 def send_login_request(ws):
     """ Generate a login request from command line data (or defaults) and send """
@@ -212,7 +210,7 @@ def send_login_request(ws):
     print(json.dumps(login_json, sort_keys=True, indent=2, separators=(',', ':')))
 
 
-''' WebSocket Process functions '''
+# WebSocket Process functions
 
 
 def on_message(ws, message):
@@ -233,22 +231,22 @@ def on_error(ws, error):
 def on_close(ws,close_status_code, close_msg):
     """ Called when websocket is closed """
     global web_socket_open
-    print("WebSocket Closed")
+    print('WebSocket Closed')
     web_socket_open = False
 
 
 def on_open(ws):
     """ Called when handshake is complete and websocket is open, send login """
 
-    print("WebSocket successfully connected!")
+    print('WebSocket successfully connected!')
     global web_socket_open
     web_socket_open = True
     send_login_request(ws)
 
 
-''' Main Process Code '''
+# Main Process Code
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     # Get command line parameters
     try:
