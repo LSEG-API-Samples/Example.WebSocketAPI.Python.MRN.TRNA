@@ -31,7 +31,7 @@ The RTO examples are based on the Version 1 Authentication (Machine-ID). If you 
 - [Real-Time WebSocket API: The Real-Time Optimized Version 2 Authentication Migration Guide](https://developers.lseg.com/en/article-catalog/article/webSocket-api-rto-v2-authentication-migration-guide).
 - [Migrating the WebSocket Machine Readable News Application to Version 2 Authentication](https://developers.lseg.com/en/article-catalog/article/migrating-the-websocket-machine-readable-news-to-rto-v2).
 
-## <a id="news_analytics"></a>Refinitiv News Analytics Overview
+## <a id="news_analytics"></a>News Analytics Overview
 
 [Machine Readable News Analytics (TRNA)](https://www.lseg.com/en/data-analytics/financial-news-service/machine-readable-news) provides real-time numerical insight into the events on multiple news sources, in a format that can be directly consumed by algorithmic trading systems. TRNA enables algorithms to exploit the power of news to seize opportunities, capitalize on market inefficiencies, and manage event risk.
 
@@ -61,9 +61,8 @@ If you are not familiar with MRN concept, please visit the following resources w
 
 * [Webinar Recording: Introduction to Machine Readable News](https://developers.lseg.com/news#news-accordion-nid-12045)
 * [Introduction to Machine Readable News (MRN) with Enterprise Message API (EMA)](https://developers.lseg.com/en/article-catalog/article/introduction-machine-readable-news-mrn-elektron-message-api-ema).
-* [MRN Data Models and Refinitiv Real-Time SDK Implementation Guide](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/rt-sdk-java/documentation#mrn-data-models-and-elektron-implementation-guide).
+* [MRN Data Models and Real-Time SDK Implementation Guide](https://developers.lseg.com/en/api-catalog/real-time-opnsrc/rt-sdk-java/documentation#mrn-data-models-and-elektron-implementation-guide).
 * [Introduction to Machine Readable News with WebSocket API](https://developers.lseg.com/en/article-catalog/article/introduction-machine-readable-news-elektron-websocket-api-refinitiv).
-* [How to get MRN News Analytics Data via WebSocket API](https://developers.lseg.com/en/article-catalog/article/how-to-get-mrn-news-analytics-data-via-elektron-websocket-api).
 
 ## <a id="prerequisite"></a>Prerequisite
 
